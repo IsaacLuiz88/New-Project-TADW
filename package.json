@@ -19,7 +19,16 @@
   },
   "dependencies": {
     "@graphql-tools/schema": "^10.0.6",
+    "fastify": "^4.28.1",
     "graphql": "^16.9.0"
+  },
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "src/**/*.ts",

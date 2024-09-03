@@ -3,7 +3,7 @@ import typeDefs from "./schema.graphql";
 
 const resolvers = {
   Query: {
-    info: () => 'Test',
+    info: () => 'Aloh',
   }
 }
 
