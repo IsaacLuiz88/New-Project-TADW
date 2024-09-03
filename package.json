@@ -33,6 +33,8 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.graphql"
+    "src/**/*.graphql",
+    "src/*.ts",
+    "src/*.graphql"
   ]
 }

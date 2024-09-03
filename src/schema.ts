@@ -1,13 +1,52 @@
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import typeDefs from "./schema.graphql";
 
+type Link = {
+    id: string;
+    url: string;
+    description: string;
+}
+
+const links: Link[] = [{
+    id: 'link-0',
+    url: 'www.howtographql.com',
+    description: 'Fullstack tutorial for GraphQL'
+}]
+
+type User = {
+    id: string;
+    name: string;
+}
+
+const users: User[] = [
+    {id: 'user-0', name: 'joao'},
+    {id: 'user-1', name: 'filipi'   }  
+];
+
 const resolvers = {
-  Query: {
-    info: () => 'Aloh',
-  }
+    Query: {
+        info: () => `This is the API of a Hackernews Clone`,
+        feed: () => links,
+        users: () => users,
+    },
+    Link: {
+        id: (parent: Link) => parent.id,
+        description: (parent: Link) => parent.description,
+        url: (parent: Link) => parent.url,
+      },
+    Mutation: {
+        createUser: (_: any, {name}: {name: string}) => {
+            const newUser: User = {
+                id: `user-${users.length}`,
+                name
+            };
+            users.push(newUser);
+            return newUser;
+        }
+    }
 }
 
 export const schema = makeExecutableSchema({
-  typeDefs,
-  resolvers,
+    typeDefs,
+    resolvers,
 });
