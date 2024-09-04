@@ -15,21 +15,21 @@ const links: Link[] = [{
 
 type User = {
     id: string;
-    name: string;
+    nome: string;
 }
 
 const users: User[] = [
-    {id: 'user-0', name: 'joao'},
-    {id: 'user-1', name: 'filipi'}  
+    {id: 'user-0', nome: 'joao'},
+    {id: 'user-1', nome: 'filipi'}  
 ];
 
 type Categoria = {
     id:     string;
-    name:   string;
+    nome:   string;
 }
 
 const categorias: Categoria[] = [
-    {id: 'categoria-0', name: 'arroz'}
+    {id: 'categoria-0', nome: 'arroz'}
 ]
 
 const resolvers = {
@@ -46,21 +46,21 @@ const resolvers = {
       },
     Categoria: {
         id: (parent: Categoria) => parent.id,
-        name: (parent: Categoria) => parent.name,
+        nome: (parent: Categoria) => parent.nome,
     },
     Mutation: {
-        createUser: (_: any, {name}: {name: string}) => {
+        createUser: (_: any, {nome}: {nome: string}) => {
             const newUser: User = {
                 id: `user-${users.length}`,
-                name
+                nome
             };
             users.push(newUser);
             return newUser;
         },
-        createCategoria: (_: any, { name }: { name: string }) => {
+        createCategoria: (_: any, { nome }: { nome: string }) => {
             const newCategoria: Categoria = {
                 id: `categoria-${categorias.length}`,
-                name
+                nome
             };
             categorias.push(newCategoria);
             return newCategoria;
